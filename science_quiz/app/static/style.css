@@ -1,0 +1,102 @@
+/* Header section styling */
+.header-section {
+    background-color: #2D3E51; /* Background color applied */
+    color: white; /* White text */
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures left and right alignment */
+}
+
+/* Placeholder Image */
+.header-section img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Navigation menu aligned to the right */
+.nav-pills {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; /* Adds spacing between items */
+}
+
+/* Style the navigation links */
+.nav-pills > li > a {
+    color: white !important;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 15px;
+}
+
+/* Remove any default background styling */
+.nav-pills > li.active > a {
+    background-color: transparent !important;
+    border: none;
+}
+
+/* Contact Form Styling */
+.contact-section {
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2D3E51;
+}
+
+/* Divider with Star */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #2D3E51;
+    margin: 10px;
+}
+
+.star {
+    font-size: 20px;
+    color: #2D3E51;
+}
+
+/* Form Fields */
+.form-control {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Remove border focus */
+.form-control:focus {
+    border-color: #2D3E51;
+    box-shadow: none;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #74D3AE;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #5CBF9C;
+}
