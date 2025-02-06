@@ -1,38 +1,88 @@
-/* Header section styling */
+/* Header Section */
 .header-section {
-    background-color: #2D3E51; /* Background color applied */
-    color: white; /* White text */
+    background-color: #2D3E51;
+    color: white;
     padding: 20px 40px;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Ensures left and right alignment */
+    justify-content: space-between;
 }
 
-/* Placeholder Image */
+/* Logo Styling - Reduce Size */
 .header-section img {
-    max-width: 150px;
+    max-width: 200px;  /* Adjust this value for your preferred size */
     height: auto;
 }
 
-/* Navigation menu aligned to the right */
+/* Ensure the navigation links are inline */
 .nav-pills {
     display: flex;
     justify-content: flex-end;
-    gap: 15px; /* Adds spacing between items */
+    align-items: center;
+    gap: 20px; /* Adjust spacing between links */
 }
 
 /* Style the navigation links */
+.nav-pills > li {
+    display: inline-block;
+    margin: 0 10px; /* Adjust margin if needed */
+}
+
+/* Ensure links stay aligned */
 .nav-pills > li > a {
     color: white !important;
     font-size: 18px;
     text-decoration: none;
     padding: 10px 15px;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 
-/* Remove any default background styling */
-.nav-pills > li.active > a {
-    background-color: transparent !important;
+/* Quiz Section */
+.quiz-section {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.quiz-section h3 {
+    font-size: 18px;
+    color: #2D3E51;
+    font-weight: bold;
+}
+
+.quiz-section h4 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Radio button styling */
+.radio {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.radio input {
+    margin-right: 10px;
+}
+
+/* Button styling */
+.btn-warning {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-warning:hover {
+    background-color: #e6b800;
 }
 
 /* Contact Form Styling */

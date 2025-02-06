@@ -17,13 +17,9 @@
     <!-- Header Section -->
     <div class="container-fluid header-section">
       <div class="row">
-        
-        <!-- Left Side: Placeholder Image -->
         <div class="col-md-6 col-xs-6 text-left">
-          <img src="{% static 'placeholder.png' %}" alt="Placeholder Image" class="img-responsive">
+          <img src="{% static 'assets/Logo.png' %}" alt="Placeholder Image" class="img-responsive">
         </div>
-        
-        <!-- Right Side: Navigation -->
         <div class="col-md-6 col-xs-6 text-right">
           <nav>
             <ul class="nav nav-pills navbar-right">
@@ -33,8 +29,30 @@
             </ul>
           </nav>
         </div>
-
       </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="container quiz-section">
+      <h3><strong>Question category:</strong> <span id="question-category">Biology</span></h3>
+      <h4 id="quiz-question">What is the powerhouse of the cell?</h4>
+
+      <form id="quiz-form">
+        <div class="radio">
+          <label><input type="radio" name="answer" value="A"> Nucleus</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="answer" value="B"> Ribosome</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="answer" value="C"> Mitochondria</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="answer" value="D"> Chloroplast</label>
+        </div>
+
+        <button type="button" class="btn btn-warning" id="next-question">Next Question</button>
+      </form>
     </div>
 
     <!-- About Section -->
