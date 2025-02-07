@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User  # Import User model
 from django.contrib import messages
+from .models import Profile
 from .forms import UserUpdateForm, ProfileUpdateForm
 
 def home(request):
@@ -11,12 +13,20 @@ def home(request):
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
+        
+        # Check if username already exists
+        username = request.POST.get('username')
+        if User.objects.filter(username=username).exists():
+            messages.error(request, 'This username is already taken. Please choose another.')
+            return render(request, 'register.html', {'form': form})
+
         if form.is_valid():
-            form.save()
+            user = form.save()
             messages.success(request, 'Account created successfully! You can now log in.')
             return redirect('login')
     else:
         form = UserCreationForm()
+    
     return render(request, 'register.html', {'form': form})
 
 def user_login(request):
@@ -37,9 +47,12 @@ def user_logout(request):
 
 @login_required
 def profile(request):
+    # Ensure user has a profile
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST, instance=profile)
 
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
@@ -48,7 +61,7 @@ def profile(request):
             return redirect('profile')
     else:
         u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        p_form = ProfileUpdateForm(instance=profile)
 
     return render(request, 'profile.html', {'u_form': u_form, 'p_form': p_form})
 
