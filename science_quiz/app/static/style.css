@@ -150,3 +150,9 @@ h2 {
 .btn-submit:hover {
     background-color: #5CBF9C;
 }
+
+/* Logo Styling */
+.logo {
+    max-width: 100px;  /* Adjust the size as needed */
+    height: auto;
+}

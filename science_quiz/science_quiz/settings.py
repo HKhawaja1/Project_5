@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import mimetypes
+import os
 
+# Ensure JavaScript files are served correctly
 mimetypes.add_type("application/javascript", ".js", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -58,7 +60,7 @@ ROOT_URLCONF = 'science_quiz.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Allow custom templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# User Authentication Redirects
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -119,9 +125,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+    BASE_DIR / "app/static",
+]
+
+# Media files (for user profile pictures, uploads, etc.)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email Configuration for Password Reset (SMTP)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your-email@gmail.com'  # Change this to your email
+EMAIL_HOST_PASSWORD = 'your-email-password'  # Use app password for security
