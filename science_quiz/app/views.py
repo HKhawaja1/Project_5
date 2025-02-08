@@ -57,13 +57,14 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, 'Profile updated successfully!')
-            return redirect('profile')
+            messages.success(request, 'Your profile has been updated successfully!')
+            return redirect('profile_updated')  # Redirect to confirmation page
+
     else:
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=profile)
 
     return render(request, 'profile.html', {'u_form': u_form, 'p_form': p_form})
 
-def password_reset(request):
-    return render(request, 'password_reset.html')
+def profile_updated(request):
+    return render(request, 'profile_updated.html', {'message': 'Your profile has been updated successfully!'})

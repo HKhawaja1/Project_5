@@ -7,10 +7,25 @@
 </head>
 <body>
     <h2>Login</h2>
+
+    <!-- Clear previous messages before displaying new ones -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                {% if 'profile updated' not in message|lower and 'logged out' in message|lower or 'invalid' in message|lower or 'account' in message|lower %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
+
+    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+    <p>Don't have an account? <a href="{% url 'register' %}">Sign up here</a></p>
 </body>
 </html>
