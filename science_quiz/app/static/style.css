@@ -1,3 +1,11 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
 /* Header Section */
 .header-section {
     background-color: #2D3E51;
@@ -8,39 +16,51 @@
     justify-content: space-between;
 }
 
-/* Logo Styling - Reduce Size */
+/* Logo Styling */
 .header-section img {
-    max-width: 200px;  /* Adjust this value for your preferred size */
+    max-width: 200px;
     height: auto;
 }
 
-/* Ensure the navigation links are inline */
+/* Navigation Links */
 .nav-pills {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 20px; /* Adjust spacing between links */
+    gap: 20px;
 }
 
-/* Style the navigation links */
 .nav-pills > li {
     display: inline-block;
-    margin: 0 10px; /* Adjust margin if needed */
+    margin: 0 10px;
 }
 
-/* Ensure links stay aligned */
 .nav-pills > li > a {
     color: white !important;
     font-size: 18px;
     text-decoration: none;
     padding: 10px 15px;
-    white-space: nowrap; /* Prevents text from wrapping */
+    white-space: nowrap;
 }
 
 /* Quiz Section */
+.quiz-container {
+    background-color: white;
+    padding: 50px 0;
+    text-align: center; /* Centers content */
+}
+
+.quiz-category {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2D3E51;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .quiz-section {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -51,26 +71,38 @@
     font-size: 18px;
     color: #2D3E51;
     font-weight: bold;
+    text-align: center;
 }
 
 .quiz-section h4 {
     font-size: 22px;
     font-weight: bold;
+    text-align: center;
 }
 
-/* Radio button styling */
+/* Radio Button Styling - Properly Aligned */
 .radio {
     padding: 10px;
     border: 1px solid #ddd;
     margin-bottom: 10px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .radio input {
     margin-right: 10px;
+    transform: scale(1.2); /* Increases radio button size slightly */
 }
 
-/* Button styling */
+.radio label {
+    font-size: 16px;
+    width: 100%; /* Ensures consistent width */
+    text-align: left; /* Aligns text properly */
+}
+
+/* Button Styling */
 .btn-warning {
     background-color: #ffcc00;
     color: black;
@@ -79,48 +111,92 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
 }
 
 .btn-warning:hover {
     background-color: #e6b800;
 }
 
-/* Contact Form Styling */
+/* Styling for Login Button After Quiz Completion */
+.btn-login {
+    background-color: #007BFF !important;
+    color: white !important;
+    text-align: center;
+}
+
+.btn-login:hover {
+    background-color: #0056b3 !important;
+}
+
+/* About Section */
+.about-container {
+    background-color: #1ABD9D;
+    padding: 50px 0;
+}
+
+.about-section {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Headings */
+.about-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Text Paragraphs */
+.about-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: white;
+}
+
+/* Bullet Points - Properly Aligned */
+.about-section ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.about-section ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+/* Remove duplicate checkmarks */
+.about-section ul li::before {
+    content: "";
+}
+
+/* Contact Form Section */
+.contact-container {
+    background-color: white;
+    padding: 50px 0;
+}
+
 .contact-section {
     max-width: 600px;
     margin: 50px auto;
     text-align: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    font-size: 28px;
-    font-weight: bold;
-    color: #2D3E51;
-}
-
-/* Divider with Star */
-.divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.divider::before,
-.divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #2D3E51;
-    margin: 10px;
-}
-
-.star {
-    font-size: 20px;
-    color: #2D3E51;
-}
-
-/* Form Fields */
+/* Form Styling */
 .form-control {
     border: none;
     border-bottom: 1px solid #ccc;
@@ -130,7 +206,6 @@ h2 {
     font-size: 16px;
 }
 
-/* Remove border focus */
 .form-control:focus {
     border-color: #2D3E51;
     box-shadow: none;
@@ -151,8 +226,16 @@ h2 {
     background-color: #5CBF9C;
 }
 
-/* Logo Styling */
-.logo {
-    max-width: 100px;  /* Adjust the size as needed */
-    height: auto;
+/* Footer Styling */
+.footer {
+    background-color: #2D3E51;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
 }

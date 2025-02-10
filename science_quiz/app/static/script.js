@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     let currentQuestionIndex = 0;
+    let quizCompleted = false; // Flag to track quiz completion
 
     // Get elements from HTML
     const questionText = document.getElementById("quiz-question");
@@ -46,9 +47,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Append Next Button
         form.appendChild(nextButton);
+        nextButton.innerText = "Next Question"; // Reset button text
+        nextButton.classList.remove("btn-login"); // Ensure it is not styled as the login button
+        quizCompleted = false; // Reset flag
     }
 
     nextButton.addEventListener("click", () => {
+        if (quizCompleted) {
+            // Redirect directly to login page when quiz is completed
+            window.location.href = "/login";
+            return;
+        }
+
         // Check if an answer was selected
         const selectedAnswer = form.querySelector("input[name='answer']:checked");
         if (!selectedAnswer) {
@@ -62,9 +72,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentQuestionIndex < questions.length) {
             loadQuestion(currentQuestionIndex);
         } else {
-            alert("Quiz completed! Restarting...");
-            currentQuestionIndex = 0;
-            loadQuestion(currentQuestionIndex);
+            // Quiz completed - Change button to "Login"
+            questionText.innerText = "You have completed the quiz! Log in to view all questions and track your progress.";
+            questionText.style.fontWeight = "bold"; // Make message bold
+            questionText.style.color = "#2D3E51"; // Ensure visibility
+
+            form.innerHTML = ""; // Clear form options
+
+            nextButton.innerText = "Login";
+            nextButton.classList.add("btn-login");
+            quizCompleted = true; // Set quiz completion flag
+
+            form.appendChild(nextButton);
         }
     });
 
