@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextButton = document.getElementById("next-question");
 
     if (!userLoggedIn) {
-        topicSelect?.remove();  // Hide topic selection if not logged in
+        topicSelect?.remove(); // Hide topic selection if not logged in
     }
 
     topicSelect?.addEventListener("change", function () {
@@ -129,6 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     nextButton.addEventListener("click", () => {
+        const selectedAnswer = form.querySelector("input[name='answer']:checked");
+        if (!selectedAnswer) {
+            alert("Please select an answer before proceeding.");
+            return;
+        }
+
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
     });
