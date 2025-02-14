@@ -1,31 +1,82 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ReviseScience</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h2>Login</h2>
 
-    <!-- Clear previous messages before displaying new ones -->
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                {% if 'profile updated' not in message|lower and 'logged out' in message|lower or 'invalid' in message|lower or 'account' in message|lower %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <!-- Wrapper to push footer to the bottom -->
+    <div class="wrapper">
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
+        <!-- Header Section -->
+        <div class="container-fluid header-section">
+            <div class="row">
+                <div class="col-md-6 col-xs-6 text-left">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'assets/Logo.png' %}" alt="ReviseScience Logo" class="logo img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-6 col-xs-6 text-right">
+                    <nav>
+                        <ul class="nav nav-pills navbar-right">
+                            <li><a href="#">Quiz</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
-    <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
-    <p>Don't have an account? <a href="{% url 'register' %}">Sign up here</a></p>
+        <!-- Login Section -->
+        <div class="container login-container">
+            <!-- Text Above Login Form -->
+            <p class="login-text">Welcome to ReviseScience! Please log in to access your quizzes.</p>
+
+            <div class="login-box">
+                <h2 class="text-center">Login</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}  <!-- Renders form fields properly -->
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+                
+                <!-- Additional Links -->
+                <p class="text-center mt-3">
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </p>
+                <p class="text-center">
+                    Don't have an account? <a href="{% url 'register' %}">Sign up here</a>
+                </p>
+            </div>
+
+            <!-- Text Below Login Form -->
+            <p class="login-text-below">New here? Sign up for free and start revising today!</p>
+        </div>
+
+    </div> <!-- End Wrapper -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">ReviseScience helps students test themselves, track progress, and revise effectively through engaging quiz questions.</p>
+    </footer>
+    <div class="copyright">
+        Copyright © ReviseScience 2025
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>

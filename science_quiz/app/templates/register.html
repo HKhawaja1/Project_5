@@ -1,16 +1,79 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | ReviseScience</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h2>Register</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
+
+    <!-- Wrapper to push footer to the bottom -->
+    <div class="wrapper">
+
+        <!-- Header Section -->
+        <div class="container-fluid header-section">
+            <div class="row">
+                <div class="col-md-6 col-xs-6 text-left">
+                    <a href="{% url 'home' %}">
+                        <img src="{% static 'assets/Logo.png' %}" alt="ReviseScience Logo" class="logo img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-6 col-xs-6 text-right">
+                    <nav>
+                        <ul class="nav nav-pills navbar-right">
+                            <li><a href="#">Quiz</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Section -->
+        <div class="container login-container">
+            <!-- Text Above Register Form -->
+            <p class="login-text">Create your free account and start revising smarter today!</p>
+
+            <div class="login-box">
+                <h2 class="text-center">Register</h2>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {{ form.as_p }}  <!-- Automatically generates form fields -->
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                </form>
+                
+                <!-- Additional Links -->
+                <p class="text-center mt-3">
+                    Already have an account? <a href="{% url 'login' %}">Login here</a>
+                </p>
+            </div>
+
+            <!-- Text Below Register Form -->
+            <p class="login-text-below">Join thousands of students improving their grades with ReviseScience!</p>
+        </div>
+
+    </div> <!-- End Wrapper -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">ReviseScience helps students test themselves, track progress, and revise effectively through engaging quiz questions.</p>
+    </footer>
+    <div class="copyright">
+        Copyright © ReviseScience 2025
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
