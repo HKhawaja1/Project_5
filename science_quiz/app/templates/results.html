@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Results Header -->
+    <div class="results-header text-center mb-5">
+        <h1 class="display-3">Quiz Results: {{ topic.name }}</h1>
+        <h2 class="text-muted">Total Marks: <span class="text-primary">{{ total_marks }}</span></h2>
+    </div>
+
+    <!-- Results Summary -->
+    <div class="results-summary mb-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title text-center" style="padding: 15px;">Summary</h3>
+                <div class="row text-center" style="padding-bottom: 15px;">
+                    <div class="col-md-4">
+                        <p class="fs-4">Total Questions: <strong>{{ attempts|length }}</strong></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="fs-4">Correct Answers: <strong class="text-success">{{ correct_answers }}</strong></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="fs-4">Incorrect Answers: <strong class="text-danger">{{ incorrect_answers }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Results -->
+    <div class="detailed-results">
+        <h2 class="text-center mb-4">Detailed Results</h2>
+        <div class="list-group">
+            {% for attempt in attempts %}
+                <div class="list-group-item mb-3 shadow-sm">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-3">Question: {{ attempt.question.text }}</h4>
+                            <p class="mb-2 fs-5"><strong>Your Answer:</strong> {{ attempt.selected_option.text }}</p>
+                            <p class="mb-2 fs-5">
+                                <strong>Correct:</strong>
+                                <span class="badge {% if attempt.is_correct %}bg-success{% else %}bg-danger{% endif %}">
+                                    {{ attempt.is_correct|yesno:"Correct,Incorrect" }}
+                                </span>
+                            </p>
+                            <p class="mb-0 fs-5"><strong>Marks Obtained:</strong> {{ attempt.marks_obtained }}</p>
+                        </div>
+                        <div>
+                            <span class="badge bg-primary rounded-pill fs-5">Question {{ forloop.counter }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

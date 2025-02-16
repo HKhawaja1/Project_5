@@ -1,153 +1,25 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReviseScience</title>
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <!-- Hidden Element to Check User Login Status -->
-    <div id="user-status" style="display: none;">{{ user.is_authenticated|yesno:"true,false" }}</div>
+{% block title %}Home - ReviseScience{% endblock %}
 
-    <!-- Header Section -->
-    <div class="container-fluid header-section">
-        <div class="row">
-            <div class="col-md-6 col-xs-6 text-left">
-                <a href="{% url 'home' %}"> <!-- Clickable logo linking to homepage -->
-                    <img src="{% static 'assets/Logo.png' %}" alt="ReviseScience Logo" class="logo img-responsive">
-                </a>
-            </div>
-            <div class="col-md-6 col-xs-6 text-right">
-                <nav>
-                    <ul class="nav nav-pills navbar-right">
-                        <li><a href="#">Quiz</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        {% if user.is_authenticated %}
-                            <li><a href="{% url 'profile' %}">Profile</a></li>
-                            <li><a href="{% url 'logout' %}">Logout</a></li>
-                        {% else %}
-                            <li><a href="{% url 'login' %}">Login</a></li>
-                            <li><a href="{% url 'register' %}">Register</a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quiz Section -->
-    <div class="quiz-container">
-        <div class="container">
-            
-            {% if user.is_authenticated %}
-            <!-- Topic Selection (Only for Logged-in Users) -->
-            <div class="quiz-header">
-                <label for="quiz-topic"><strong>Select a topic:</strong></label>
-                <select id="quiz-topic" class="form-control">
-                    <option value="Biology">Biology</option>
-                    <option value="Chemistry">Chemistry</option>
-                    <option value="Physics">Physics</option>
-                </select>
-            </div>
-            {% endif %}
-
-            <h3 class="quiz-category text-center"><strong>Question category:</strong> <span id="question-category">Biology</span></h3>
-
-            <div class="quiz-section">
-                <h4 id="quiz-question" class="text-center">Click Start Quiz to begin!</h4>
-
-                <form id="quiz-form">
-                    <button type="button" class="btn btn-primary btn-block" id="start-quiz">Start Quiz</button>
-                    <button type="button" class="btn btn-warning btn-block" id="next-question" style="display: none;">Next Question</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <div class="about-container">
-        <div class="container about-section">
-            <h2 class="text-center">About ReviseScience</h2>
-            <p>
-                <strong>ReviseScience</strong> is a free online revision tool designed to help students 
-                practice quiz questions in **Biology, Chemistry, and Physics**. Whether you’re preparing 
-                for exams or just want to test your knowledge, this app provides an interactive way to 
-                learn and improve your understanding of science.
-            </p>
-            <p>
-                We offer **a wide range of quiz questions** across all three subjects, structured in a format 
-                similar to real exam questions. Our database is continually updated to ensure that students 
-                have access to **accurate and challenging questions** that reflect key scientific concepts.
-            </p>
-            <p>
-                With ReviseScience, you can:
-            </p>
-            <ul>
-                <li>✅ <strong>Test yourself on a specific subject</strong> – Choose from Biology, Chemistry, or Physics.</li>
-                <li>✅ <strong>Revise with random questions</strong> – Get a mix of questions to challenge your knowledge.</li>
-                <li>✅ <strong>Track your progress</strong> – Identify your strengths and areas for improvement.</li>
-                <li>✅ <strong>Practice anytime, anywhere</strong> – The site is mobile-friendly, allowing you to revise on the go.</li>
-            </ul>
-            <p>
-                **Why choose ReviseScience?**
-            </p>
-            <p>
-                - Our platform is built with students in mind, ensuring that the questions are structured 
-                to help with **exam preparation and real-world understanding**.<br>
-                - The site is completely **free to use**, with **no sign-up required** for the basic quiz.<br>
-                - Registered users can access **full-length quizzes** and **track their performance over time**.<br>
-                - We are constantly **updating our database** with new and challenging questions to reflect 
-                current academic standards.
-            </p>
-        </div>
-    </div>
-
-    <!-- Contact Form Section -->
-    <div class="contact-container">
-        <div class="container contact-section">
-            <h2 class="text-center">CONTACT ME</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Full name" required>
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Quiz Topics</h1>
+    <div class="row">
+        {% for topic in topics %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="panel panel-default quiz-card">
+                    <div class="panel-body text-center">
+                        <h3 class="panel-title quiz-title">{{ topic.name }}</h3>
+                        <p class="text-muted quiz-description">{{ topic.description|default:"Test your knowledge in "|add:topic.name }}</p>
+                        <a href="{% url 'start_quiz' topic.id %}" class="btn btn-primary quiz-btn">
+                            <i class="glyphicon glyphicon-play-circle"></i> Start Quiz
+                        </a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email address" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" class="form-control" placeholder="Phone number" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-submit">Send</button>
-            </form>
-        </div>
+            </div>
+        {% endfor %}
     </div>
-<!-- Footer Section -->
-<footer class="footer">
-    <div class="container">
-        <p class="footer-text">
-            ReviseScience is your go-to platform for interactive science quizzes in Biology, Chemistry, and Physics. 
-            Enhance your learning, test your knowledge, and track your progress—all in one place.
-        </p>
-    </div>
-</footer>
+</div>
 
-    <!-- Copyright Section -->
-    <div class="copyright">
-        <p>Copyright © ReviseScience 2025</p>
-    </div>
-
-    <!-- JavaScript -->
-    <script src="{% static 'script.js' %}"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Leaderboard - {{ topic.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Leaderboard for {{ topic.name }}</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Best Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in leaderboard %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ entry.user__username }}</td>
+                    <td>{{ entry.best_marks }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'all_topics' %}" class="btn btn-secondary mt-3">Back to Topics</a>
+</div>
+{% endblock %}

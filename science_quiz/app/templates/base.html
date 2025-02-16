@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ReviseScience{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <!-- Hidden Element to Check User Login Status -->
+    <div id="user-status" style="display: none;">{{ user.is_authenticated|yesno:"true,false" }}</div>
+
+    <!-- Header Section -->
+    <div class="container-fluid header-section">
+        <div class="row">
+            <div class="col-md-6 col-xs-6 text-left">
+                <a href="{% url 'home' %}"> <!-- Clickable logo linking to homepage -->
+                    <img src="{% static 'assets/Logo.png' %}" alt="ReviseScience Logo" class="logo img-responsive">
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                <nav>
+                    <ul class="nav nav-pills navbar-right">
+                        <li><a href="{% url 'home' %}">Quiz</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'all_topics' %}">Leaderboards</a></li>
+                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li>
+                                <a href="#" onclick="document.getElementById('logout-form').submit();" style="cursor: pointer;">
+                                    Logout
+                                </a>
+                                <form id="logout-form" method="post" action="{% url 'logout' %}" style="display: none;">
+                                    {% csrf_token %}
+                                </form>
+                            </li>    
+                        {% else %}
+                            <li><a href="{% url 'login' %}">Login</a></li>
+                            <li><a href="{% url 'register' %}">Register</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="flex-wrapper">
+        <!-- Main Content Block -->
+        <div class="main-content">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">
+                    ReviseScience is your go-to platform for interactive science quizzes in Biology, Chemistry, and Physics. 
+                    Enhance your learning, test your knowledge, and track your progress—all in one place.
+                </p>
+            </div>
+            <!-- Copyright Section -->
+            <div class="copyright">
+                <p>Copyright © ReviseScience 2025</p>
+            </div>
+        </footer>  
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap 3.4.1 JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

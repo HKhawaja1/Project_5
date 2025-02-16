@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - ReviseScience{% endblock %}
+
+{% block content %}
+<!-- Contact Form Section -->
+<div class="contact-container">
+    <div class="container contact-section">
+        {% include 'messages.html'%}
+        <h2 class="text-center">CONTACT ME</h2>
+        <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %} <!-- Required for security in Django forms -->
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Full name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" class="form-control" name="phone" placeholder="Phone number">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="message" rows="4" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send</button>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - ReviseScience{% endblock %}
+
+{% block content %}
+<div class="container login-container">
+    <div class="container contact-section">
+        <h1 class="text-center" style="margin-bottom: 20px;"><strong>Profile</strong></h1>
+        <!-- Profile Information -->
+        <div class="mb-4">
+            <p class="mb-3"><strong>Username:</strong> {{ profile.user.username }}</p>
+            <p class="mb-1"><strong>Email:</strong> {{ profile.user.email }}</p>
+            <p class="mb-1"><strong>Phone:</strong> {{ profile.phone|default:"Not provided" }}</p>
+            <p class="mb-0"><strong>Address:</strong> {{ profile.address|default:"Not provided" }}</p>
+        </div>
+
+        <!-- Update Profile Form -->
+        <form method="post">
+            {% csrf_token %}
+            <!-- Phone Field -->
+            <div class="form-group">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" value="{{ profile.phone }}">
+            </div>
+
+            <!-- Address Field -->
+            <div class="form-group">
+                <textarea class="form-control" id="address" name="address" placeholder="Enter your address" rows="3">{{ profile.address }}</textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

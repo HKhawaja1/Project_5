@@ -227,7 +227,7 @@ body {
 
 .contact-section {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 20px auto;
     text-align: center;
     background-color: white;
     padding: 30px;
@@ -263,7 +263,6 @@ body {
     font-weight: bold;
     color: #2D3E51;
     text-align: center;
-    margin-bottom: 55px;
 }
 
 .login-text-below, .register-text-below {
@@ -350,4 +349,221 @@ body {
     font-size: 14px;
     color: #555;
     margin-top: 5px; /* Adds some spacing below the input field */
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 95vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quiz-btn {
+    color: white !important;
+}
+  
+.quiz-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    padding: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); /* More shadow on hover */
+}
+
+.quiz-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.quiz-description {
+    font-size: 16px;
+    color: #666;
+}
+
+.quiz-btn {
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.quiz-btn i {
+    margin-right: 5px;
+}
+
+/* Custom styles for the quiz question page */
+.quiz-header {
+    margin-bottom: 40px;
+}
+
+.quiz-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.quiz-header p {
+    font-size: 1.25rem;
+    color: #7f8c8d;
+}
+
+.progress {
+    height: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 25px;
+    background-color: #17a2b8;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #ffffff;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.option label {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+.option label:hover {
+    background-color: #e9ecef;
+}
+
+.option input[type="radio"] {
+    margin-right: 15px;
+}
+
+.btn-lg {
+    padding: 12px 40px;
+    font-size: 1.25rem;
+    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+
+/* Custom styles for the quiz results page */
+.results-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.results-header h2 {
+    font-size: 2rem;
+    color: #7f8c8d;
+}
+
+.results-summary .card {
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.results-summary .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.results-summary .card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.results-summary .fs-4 {
+    font-size: 1.5rem;
+    color: #34495e;
+}
+
+.detailed-results h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+.list-group-item {
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.list-group-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item h4 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.list-group-item p {
+    font-size: 1.25rem;
+    color: #34495e;
+}
+
+.badge {
+    font-size: 1.25rem;
+    padding: 0.5em 0.75em;
+}
+
+.badge.bg-success {
+    background-color: #28a745 !important;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+}
+
+.badge.bg-primary {
+    background-color: #3498db !important;
 }

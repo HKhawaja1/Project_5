@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - ReviseScience{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Quiz Topics</h1>
+    <div class="row">
+        {% for topic in topics %}
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="panel panel-default quiz-card">
+                    <div class="panel-body text-center">
+                        <h3 class="panel-title quiz-title">{{ topic.name }}</h3>
+                        <p class="text-muted quiz-description">The leaderboard</p>
+                        <a href="{% url 'leaderboard' topic.id %}" class="btn btn-primary quiz-btn">
+                            <i class="glyphicon glyphicon-play-circle"></i> SEE THE STAT
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

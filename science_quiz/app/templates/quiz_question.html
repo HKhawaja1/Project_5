@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz - ReviseScience{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Quiz Header -->
+    <div class="quiz-header text-center mb-5">
+        <h1 class="display-4">{{ topic.name }} Quiz</h1>
+        <p class="lead">Question {{ current_question_index }} of {{ total_questions }}</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress mb-5">
+        <div class="progress-bar bg-info" role="progressbar" 
+             style="width: {{ progress }}%;" 
+             aria-valuenow="{{ progress }}" 
+             aria-valuemin="0" 
+             aria-valuemax="100">
+            {{ progress }}%
+        </div>
+    </div>
+
+    <!-- Question -->
+    <div class="card mb-5 shadow-sm">
+        <div class="card-body">
+            <h3 class="card-title text-center mb-4">{{ question.text }}</h3>
+        </div>
+    </div>
+
+    <!-- Options -->
+    <form method="post">
+        {% csrf_token %}
+        <div class="options mb-5">
+            {% for option in question.options.all %}
+                <div class="option card mb-3 shadow-sm">
+                    <label class="card-body d-flex align-items-center mb-0">
+                        <input type="radio" name="option" value="{{ option.id }}" required 
+                               class="me-3" style="transform: scale(1.5);">
+                        <span class="fs-5">{{ option.text }}</span>
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="text-center">
+            {% if current_question_index < total_questions %}
+                <button type="submit" class="btn btn-primary btn-lg">
+                    Next Question <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            {% else %}
+                <button type="submit" class="btn btn-success btn-lg">
+                    Finish Quiz <i class="fas fa-check ms-2"></i>
+                </button>
+            {% endif %}
+        </div>
+    </form>
+</div>
+{% endblock %}

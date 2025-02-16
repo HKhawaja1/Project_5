@@ -4,25 +4,21 @@ from django.contrib.auth import views as auth_views
 from app import views
 
 urlpatterns = [
-    # Admin Panel
-    path('admin/', admin.site.urls),
 
     # Home Page
     path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
 
-    # Authentication Routes
-    path('register/', views.register, name='register'),
-    path('login/', views.user_login, name='login'),
-    path('logout/', views.user_logout, name='logout'),
-    path('profile/', views.profile, name='profile'),
-    path('profile-updated/', views.profile_updated, name='profile_updated'),  # ✅ Confirmation page after profile update
+    path('start-quiz/<int:topic_id>/', views.start_quiz, name='start_quiz'),
+    path('quiz/<int:topic_id>/<int:question_id>/', views.quiz_question, name='quiz_question'),
+    path('quiz-results/<int:topic_id>/', views.quiz_results, name='quiz_results'),
 
-    # Password Reset Routes (Django Built-in)
-    path('password-reset/', auth_views.PasswordResetView.as_view(template_name="registration/password_reset_form.html"), name='password_reset'),
-    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name="registration/password_reset_done.html"), name='password_reset_done'),
-    path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_reset_confirm.html"), name='password_reset_confirm'),
-    path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name="registration/password_reset_complete.html"), name='password_reset_complete'),
+    path('submit-answer/<int:question_id>/', views.submit_answer, name='submit_answer'),
+    path('results/<int:topic_id>/', views.quiz_results, name='quiz_results'),
+
+    path('leaderboards/', views.all_topics, name='all_topics'),
+    path('leaderboard/<int:topic_id>/', views.leaderboard, name='leaderboard'),
 
     # ✅ New Route: Save Quiz Attempt
-    path('save-quiz-attempt/', views.save_quiz_attempt, name='save_quiz_attempt'),
+    # path('save-quiz-attempt/', views.save_quiz_attempt, name='save_quiz_attempt'),
 ]
