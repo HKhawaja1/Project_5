@@ -5,14 +5,14 @@ set -e
 
 # Install dependencies
 echo "Installing dependencies..."
-pip install -r science_quiz/requirements.txt
+pip install -r requirements.txt
 
 # Collect static files
 echo "Collecting static files..."
-python science_quiz/manage.py collectstatic --noinput
+python manage.py collectstatic --noinput
 
 # Run database migrations
 echo "Running database migrations..."
-python science_quiz/manage.py migrate
+python manage.py migrate
 
 echo "Build completed!"
