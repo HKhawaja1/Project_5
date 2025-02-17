@@ -95,8 +95,67 @@ This project demonstrates strong web development skills using Django, PostgreSQL
 
 ## 📝 References  
 
-- GitHub Repository: [Project_5](https://github.com/HKhawaja1/Project_5)  
-- Live Site: [ReviseScience](https://project-5-3klq.onrender.com/login/)  
-- Django Documentation: [Django Official Site](https://www.djangoproject.com/)  
-- Bootstrap: [Get Bootstrap](https://getbootstrap.com/)  
-- PSQL Database: [Render](https://render.com/)  
+ChatGPT
+https://youtu.be/FJBTwa0R_5g?si=GpfTs5LXzBwf0nCh
+
+https://youtu.be/fVy9eJzloj8?si=Vb0vl6TrgnfA6jpL
+
+https://www.w3schools.com/js/js_popup.asp
+
+https://www.w3schools.com/Js/js_functions.asp
+
+https://logo.com/
+
+https://startbootstrap.com/theme/freelancer
+
+https://www.revisemrcp.com/
+
+https://www.w3schools.com/bootstrap/
+
+https://www.w3schools.com/django/django_add_js_file.php
+
+https://www.w3schools.com/django/django_create_app.php
+
+https://www.youtube.com/watch?v=X2USjTDVtBM&list=PLgHw_wODS1vUYi4bdXQt1syR8UoGYZq1Z - Playlist
+
+https://docs.djangoproject.com/en/5.1/topics/auth/default/
+
+https://learndjango.com/tutorials/django-login-and-logout-tutorial
+
+https://www.youtube.com/watch?v=vzBFJ3WEvOQ
+
+https://dev.to/earthcomfy/django-reset-password-3k0l
+
+https://www.youtube.com/watch?v=ZR8Ymkx30p0
+
+https://medium.com/@ellysam/how-to-send-emails-using-python-django-and-google-smtp-server-at-no-cost-bbcbb8e8638b
+
+https://www.w3schools.com/django/django_admin_create_user.php
+
+https://www.w3schools.com/js/js_arrays.asp
+
+https://www.w3schools.com/jsref/met_element_remove.asp
+
+https://www.w3schools.com/jsref/met_element_addeventlistener.asp
+
+https://www.w3schools.com/Jsref/met_document_getelementbyid.asp
+
+https://www.w3schools.com/jsref/prop_node_innertext.asp
+
+https://www.w3schools.com/Jsref/met_node_appendchild.asp
+
+https://www.w3schools.com/Jsref/met_document_queryselector.asp
+
+https://www.w3schools.com/css/css3_flexbox.asp
+
+https://www.w3schools.com/css/css_boxmodel.asp
+
+https://www.w3schools.com/cssref/css_pr_translate.php
+
+https://www.w3schools.com/cssref/css3_pr_box-shadow.php
+
+https://www.w3schools.com/css/css3_transitions.asp
+
+https://www.w3schools.com/django/ - All the categories
+
+https://www.geeksforgeeks.org/django-forms/
