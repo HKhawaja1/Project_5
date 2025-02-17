@@ -96,6 +96,7 @@ This project demonstrates strong web development skills using Django, PostgreSQL
 ## 📝 References  
 
 ChatGPT
+
 https://youtu.be/FJBTwa0R_5g?si=GpfTs5LXzBwf0nCh
 
 https://youtu.be/fVy9eJzloj8?si=Vb0vl6TrgnfA6jpL
