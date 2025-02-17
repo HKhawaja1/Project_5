@@ -44,7 +44,8 @@ The **ReviseScience Quiz Application** is an interactive web-based platform desi
 - Full CRUD functionality (Create, Read, Update, Delete) for quiz questions.  
 - User and quiz performance management.  
 - Access user messages from the contact form.  
-- Admin Login: [Admin Dashboard](https://project-5-3klq.onrender.com/admin/login/?next=/admin/)  
+- Admin Login: [Admin Dashboard](https://project-5-3klq.onrender.com/admin/login/?next=/admin/)
+- Admin Login info provided in the Admin.pdf file 
 
 ---
 
