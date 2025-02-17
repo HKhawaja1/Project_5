@@ -64,14 +64,24 @@ The **ReviseScience Quiz Application** is an interactive web-based platform desi
 
 ### Steps to Deploy:  
 1. Sign up on [Render](https://render.com/).  
-2. Click “Web Service” and connect to your GitHub repository.  
-3. Enter environment variables (hidden from GitHub for security):  
-   - `DB_HOST`: Host name from PSQL database on Render.  
-   - `DB_PASSWORD`: Password from PSQL database.  
-   - `EMAIL_HOST_USER`: Gmail address (for email functionality).  
-   - `EMAIL_HOST_PASSWORD`: App-specific Gmail password ([Generate here](https://myaccount.google.com/apppasswords)).  
-   - `SECRET_KEY`: Django secret key ([Generate here](https://djecrety.ir/)).  
-4. Deploy your web service and access the generated live URL.  
+2. Click Web Service, connect to your GitHub repository, fill in all the fields and enter the environment variables at the bottom so this doesn't have to be pushed to GitHub and leak your confidential information.
+   ![Web Service](https://i.ibb.co/35LzzPsS/Render-1.png)
+   ![Connect GitHub](https://i.ibb.co/LH6nsnT/Render-2.png)
+3. Don’t forget to create the database. Give it any name you want, choose any of the plans and leave the optional fields empty so they can be randomly generated
+   ![Database](https://i.ibb.co/VcmwS3Cm/Render-3.png)
+   
+   Here are the environment variables you should enter.
+   
+ - For DB_HOST enter the host name you see in the connections photo down below which is from creating the PSQL database on Render. 
+ - For DB_PASSWORD enter the password you see in the PSQL database. 
+ - For EMAIL_HOST_PASSWORD enter the app generated password from https://myaccount.google.com/apppasswords
+ - For EMAIL_HOST_USER enter the gmail address that you used for the app generated password.
+ - For SECRET_KEY enter the secret key you generated from https://djecrety.ir/ which should also be the same in the files on your local machine.
+   ![Environment Variables](https://i.ibb.co/Pz58fXS0/Render-Env.png)
+   ![Environment Variables](https://i.ibb.co/bRPDZdf8/Render-Env-2.png)
+
+4. Once you have all of this sorted out deploy your web service and click on the link generated to see your app live.
+   ![Render URL](https://i.ibb.co/d03PVhwj/Render-4.png)
 
 ---
 
